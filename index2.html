@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FreeRoot Linux – Distribuição Brasileira LFS</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #fff;
+      --text: #333;
+      --text-light: #666;
+      --link: #1793d1;
+      --border: #e0e0e0;
+      --header-bg: #fafafa;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      scroll-behavior: smooth;
+    }
+
+    a { color: var(--link); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* NAVBAR */
+    nav {
+      background: var(--header-bg);
+      border-bottom: 1px solid var(--border);
+      padding: 0.8rem 0;
+    }
+
+    .nav-container {
+      max-width: 960px;
+      margin: auto;
+      padding: 0 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      font-weight: 600;
+      font-size: 1.2rem;
+      color: var(--text);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .nav-links a {
+      font-size: 0.9rem;
+      color: var(--text-light);
+    }
+
+    .nav-links a:hover { 
+      color: var(--link); 
+    }
+
+    /* HERO */
+    header {
+      padding: 3rem 1.5rem 2rem;
+      text-align: center;
+      background: var(--header-bg);
+      border-bottom: 1px solid var(--border);
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      font-weight: 600;
+      margin-bottom: 0.8rem;
+      color: var(--text);
+    }
+
+    .subtitle {
+      max-width: 700px;
+      margin: auto;
+      color: var(--text-light);
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+
+    .hero-actions {
+      margin-top: 2rem;
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 0.6rem 1.5rem;
+      border: 1px solid var(--border);
+      background: var(--bg);
+      color: var(--text);
+      cursor: pointer;
+      font-size: 0.9rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .btn:hover {
+      background: var(--header-bg);
+      text-decoration: none;
+    }
+
+    .btn.primary {
+      background: var(--link);
+      color: white;
+      border-color: var(--link);
+    }
+
+    .btn.primary:hover {
+      opacity: 0.9;
+    }
+
+    /* STATUS BADGE */
+    .status-banner {
+      background: #fff3cd;
+      border: 1px solid #ffc107;
+      padding: 0.7rem 1.2rem;
+      margin-top: 1.5rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+      color: #856404;
+    }
+
+    /* MAIN */
+    main {
+      max-width: 960px;
+      margin: auto;
+      padding: 3rem 1.5rem;
+    }
+
+    section {
+      margin-bottom: 3rem;
+    }
+
+    section h2 {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      color: var(--text);
+      font-weight: 600;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.5rem;
+    }
+
+    section p { 
+      color: var(--text);
+      font-size: 0.95rem;
+      line-height: 1.7;
+      margin-bottom: 0.8rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      padding: 1.5rem;
+    }
+
+    .card h3 {
+      margin-bottom: 0.5rem;
+      color: var(--text);
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+
+    .card p {
+      color: var(--text-light);
+      font-size: 0.9rem;
+    }
+
+    /* SCREENSHOT */
+    .screenshot-container {
+      margin-top: 1.5rem;
+      border: 1px solid var(--border);
+      background: var(--bg);
+      padding: 1rem;
+    }
+
+    .screenshot-container img {
+      width: 100%;
+      border: 1px solid var(--border);
+    }
+
+    .screenshot-link {
+      display: inline-block;
+      margin-top: 0.5rem;
+      color: var(--link);
+      font-size: 0.9rem;
+    }
+
+    /* TECHNICAL SECTION */
+    .terminal-box {
+      background: #f5f5f5;
+      border: 1px solid var(--border);
+      padding: 1rem;
+      margin-top: 1rem;
+      font-family: 'Courier New', monospace;
+      font-size: 0.85rem;
+      overflow-x: auto;
+    }
+
+    .terminal-line {
+      margin-bottom: 0.2rem;
+      color: var(--text);
+    }
+
+    .terminal-error {
+      color: #d32f2f;
+    }
+
+    .terminal-success {
+      color: #388e3c;
+    }
+
+    .terminal-info {
+      color: var(--text-light);
+    }
+
+    /* TAGS */
+    .tags { 
+      display: flex; 
+      gap: 0.5rem; 
+      flex-wrap: wrap; 
+      margin-top: 1rem; 
+    }
+
+    .tag {
+      font-size: 0.8rem;
+      padding: 0.3rem 0.8rem;
+      background: var(--header-bg);
+      border: 1px solid var(--border);
+      color: var(--text-light);
+    }
+
+    /* TEAM SECTION */
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .team-member {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      padding: 1.5rem;
+      text-align: center;
+    }
+
+    .team-member h4 {
+      color: var(--text);
+      font-size: 1rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .discord-tag {
+      color: var(--text-light);
+      font-size: 0.85rem;
+      font-family: 'Courier New', monospace;
+    }
+
+    /* FOOTER */
+    footer {
+      margin-top: 3rem;
+      border-top: 1px solid var(--border);
+      padding: 2rem 1.5rem;
+      background: var(--header-bg);
+    }
+
+    .footer-content {
+      max-width: 960px;
+      margin: auto;
+      text-align: center;
+    }
+
+    .footer-info {
+      color: var(--text-light);
+      margin: 1rem 0;
+      font-size: 0.9rem;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin: 1.5rem 0;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: var(--text-light);
+      font-size: 0.9rem;
+    }
+
+    .copyright {
+      margin-top: 1.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+      color: var(--text-light);
+      font-size: 0.85rem;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .nav-links {
+        gap: 1rem;
+        font-size: 0.85rem;
+      }
+
+      header h1 {
+        font-size: 2rem;
+      }
+
+      section h2 {
+        font-size: 1.5rem;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-container">
+    <div class="brand">FreeRoot Linux</div>
+    <div class="nav-links">
+      <a href="#about">Sobre</a>
+      <a href="#features">Recursos</a>
+      <a href="#technical">Técnico</a>
+      <a href="#roadmap">Roadmap</a>
+      <a href="#community">Comunidade</a>
+    </div>
+  </div>
+</nav>
+
+<header>
+  <h1>FreeRoot Linux</h1>
+  <p class="subtitle">
+    Uma distribuição Linux independente baseada em Linux From Scratch,
+    focada em aprendizado profundo, controle total do sistema e filosofia open source.
+  </p>
+
+  <div class="hero-actions">
+    <a class="btn primary" href="https://freeroot.org/br">Download (em breve)</a>
+    <a class="btn" href="https://discord.gg/vgBh56SH">Entrar na comunidade</a>
+  </div>
+
+  <div class="status-banner">
+    <span>⚙️ Status: Em Desenvolvimento Ativo</span>
+  </div>
+</header>
+
+<main>
+
+  <section id="about">
+    <h2>Sobre o projeto</h2>
+    <p>
+      O FreeRoot Linux é um projeto educacional e experimental que nasce
+      com o objetivo de ensinar como um sistema Linux funciona internamente — desde o
+      boot até o ambiente de usuário. Baseado em Linux From Scratch (LFS), 
+      ele oferece controle total sobre cada componente do sistema, permitindo otimizações 
+      específicas e uma compreensão profunda de como um sistema operacional é construído.
+    </p>
+    <p>
+      Esta abordagem permite aos usuários construir seu próprio sistema Linux personalizado 
+      a partir do código-fonte, escolhendo cada componente e configuração. O projeto está 
+      em desenvolvimento ativo e ainda não está pronto para uso em produção.
+    </p>
+    <div class="tags">
+      <span class="tag">LFS</span>
+      <span class="tag">Open Source</span>
+      <span class="tag">Minimalista</span>
+      <span class="tag">Educacional</span>
+      <span class="tag">🇧🇷 Brasileiro</span>
+    </div>
+  </section>
+
+  <section id="features">
+    <h2>Principais características</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Base LFS</h3>
+        <p>Construído manualmente a partir do Linux From Scratch, sem abstrações desnecessárias.</p>
+      </div>
+      <div class="card">
+        <h3>Controle total</h3>
+        <p>Cada componente é configurável. Você decide o que entra no seu sistema.</p>
+      </div>
+      <div class="card">
+        <h3>Foco educacional</h3>
+        <p>Ideal para quem quer aprender como o Linux realmente funciona nos bastidores.</p>
+      </div>
+      <div class="card">
+        <h3>Comunidade aberta</h3>
+        <p>Desenvolvido por brasileiros, aberto a contribuições de todo o mundo.</p>
+      </div>
+      <div class="card">
+        <h3>Performance</h3>
+        <p>Otimizado para o seu hardware específico, sem bloatware.</p>
+      </div>
+      <div class="card">
+        <h3>Transparência</h3>
+        <p>Você sabe exatamente o que está rodando no seu sistema.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="screenshot">
+    <h2>Estado atual</h2>
+    <p>Snapshot real do sistema em desenvolvimento, mostrando o neofetch com as especificações do sistema.</p>
+    <div class="screenshot-container">
+      <img src="https://i.imgur.com/aWykRM7.png" alt="FreeRoot Linux executando neofetch" />
+      <a href="https://i.imgur.com/aWykRM7.png" target="_blank" class="screenshot-link">
+        Ver imagem em tela cheia →
+      </a>
+    </div>
+  </section>
+
+  <section id="technical">
+    <h2>Informações técnicas</h2>
+    <p>
+      Ao compilar pacotes para o FreeRoot Linux, é comum encontrar dependências que precisam 
+      ser resolvidas manualmente. Este é um exemplo típico durante a construção do sistema:
+    </p>
+    
+    <div class="terminal-box">
+      <div class="terminal-line terminal-info">checking for C++11 by default... <span class="terminal-success">yes</span></div>
+      <div class="terminal-line terminal-info">checking for fontconfig xrender xcomposite xdamage xfixes xext x11... <span class="terminal-error">no</span></div>
+      <div class="terminal-line terminal-error">configure: error: Package requirements (fontconfig xrender xcomposite xdamage xfixes xext x11) were not met:</div>
+      <div class="terminal-line" style="margin-left: 20px;">
+        No package 'fontconfig' found<br>
+        No package 'xrender' found<br>
+        No package 'xcomposite' found<br>
+        No package 'xdamage' found<br>
+        No package 'xfixes' found
+      </div>
+      <div class="terminal-line" style="margin-top: 1rem;">
+        Consider adjusting the PKG_CONFIG_PATH environment variable if you<br>
+        installed software in a non-standard prefix.
+      </div>
+    </div>
+    
+    <p>
+      Essas dependências são típicas em sistemas baseados em LFS e precisam ser compiladas 
+      e instaladas manualmente durante a construção do sistema. Este processo, embora trabalhoso, 
+      oferece um entendimento profundo de como as bibliotecas e aplicações se relacionam.
+    </p>
+  </section>
+
+  <section id="roadmap">
+    <h2>Roadmap de desenvolvimento</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Fase 1 - Base</h3>
+        <p>Sistema base funcional com toolchain completo, kernel estável e sistema de boot operacional.</p>
+        <div class="tags">
+          <span class="tag">Em progresso</span>
+        </div>
+      </div>
+      <div class="card">
+        <h3>Fase 2 - Gerenciamento</h3>
+        <p>Desenvolvimento de gerenciador de pacotes próprio e documentação completa em português.</p>
+        <div class="tags">
+          <span class="tag">Planejado</span>
+        </div>
+      </div>
+      <div class="card">
+        <h3>Fase 3 - Interface</h3>
+        <p>Implementação de ambiente gráfico leve e criação de ISO oficial para instalação.</p>
+        <div class="tags">
+          <span class="tag">Futuro</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="community">
+    <h2>Comunidade e equipe</h2>
+    <p>
+      🇧🇷 O FreeRoot Linux está sendo desenvolvido por uma equipe dedicada de brasileiros. 
+      Se você é desenvolvedor e quer contribuir com o projeto, ou apenas quer acompanhar 
+      o desenvolvimento, entre em contato através do Discord.
+    </p>
+    
+    <div class="team-grid">
+      <div class="team-member">
+        <h4>estevao</h4>
+        <p class="discord-tag">@estevaogatito</p>
+      </div>
+      
+      <div class="team-member">
+        <h4>pysvoidxz</h4>
+        <p class="discord-tag">@pysvoidxz</p>
+      </div>
+      
+      <div class="team-member">
+        <h4>The LuuunoXD</h4>
+        <p class="discord-tag">@theluuunoxd</p>
+      </div>
+    </div>
+
+    <div class="team-grid">
+      <div class="team-member">
+        <h4>Ts</h4>
+        <p class="discord-tag">@ts.com7</p>
+      </div>
+
+      <div class="team-member">
+        <h4>ADR1XX</h4>
+        <p class="discord-tag">@mrx042557</p>
+      </div>
+
+      <div class="team-member">
+        <h4>Arch/Arisu</h4>
+        <p class="discord-tag">@arisu090408</p>
+      </div>
+    </div>
+
+    <div class="team-grid">
+      <div class="team-member">
+        <h4>Daniel</h4>
+        <p class="discord-tag">@daniastux</p>
+      </div>
+
+      <div class="team-member">
+        <h4>Gustaxd</h4>
+        <p class="discord-tag">@gusta.kkkkjjj</p>
+      </div>
+
+      <div class="team-member">
+        <h4>lian</h4>
+        <p class="discord-tag">@decimacro</p>
+      </div>
+    </div>
+
+    <p style="margin-top: 2rem; text-align: center;">
+      <strong>Interessado em contribuir?</strong> Estamos sempre abertos a novas ideias e colaborações!
+    </p>
+  </section>
+
+</main>
+
+<footer>
+  <div class="footer-content">
+    <div class="footer-info">
+      <p>🇧🇷 Projeto open source desenvolvido por brasileiros</p>
+      <p>Educacional, experimental e totalmente transparente</p>
+    </div>
+
+    <div class="footer-links">
+      <a href="#about">Sobre</a>
+      <a href="#features">Recursos</a>
+      <a href="#roadmap">Roadmap</a>
+      <a href="#community">Comunidade</a>
+    </div>
+
+    <div class="copyright">
+      <p>© 2026 FreeRoot Linux • Todos os direitos reservados</p>
+      <p>
+        Linux From Scratch (LFS) é um projeto de livro e comunidade que fornece 
+        instruções passo a passo para construir um sistema Linux personalizado a partir do código-fonte.
+      </p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Smooth scroll para links internos
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+  });
+</script>
+
+</body>
+</html>
