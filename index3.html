@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FreeRoot Linux – Distribuição Brasileira LFS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    :root {
+      --bg: #000000;
+      --bg-soft: #0a0a0a;
+      --panel: #1a1a1a;
+      --text: #ffffff;
+      --muted: #a0a0a0;
+      --primary: #a855f7;
+      --accent: #c084fc;
+      --border: #2a2a2a;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+    }
+
+    a { 
+      color: var(--accent); 
+      text-decoration: none; 
+      transition: color 0.2s ease; 
+    }
+    
+    a:hover { color: var(--primary); }
+
+    /* NAVBAR */
+    nav {
+      background: var(--bg-soft);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 0;
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand {
+      font-weight: 700;
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--text);
+    }
+
+    .brand i {
+      color: var(--primary);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    /* HEADER */
+    header {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 4rem 2rem 3rem;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+
+    .tagline {
+      color: var(--muted);
+      font-size: 1.1rem;
+      max-width: 800px;
+      margin-bottom: 2rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border-radius: 6px;
+      font-size: 0.95rem;
+      border: 1px solid var(--border);
+      background: var(--panel);
+      color: var(--text);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .btn:hover {
+      border-color: var(--primary);
+      background: rgba(168, 85, 247, 0.1);
+    }
+
+    .status {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      background: rgba(168, 85, 247, 0.1);
+      border: 1px solid rgba(168, 85, 247, 0.3);
+      border-radius: 6px;
+      color: var(--primary);
+      font-size: 0.9rem;
+    }
+
+    /* MAIN */
+    main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem 2rem 4rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 3rem;
+      margin-top: 2rem;
+    }
+
+    section h2 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+
+    section p {
+      color: var(--muted);
+      margin-bottom: 1rem;
+      line-height: 1.7;
+    }
+
+    section ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    section li {
+      padding: 0.5rem 0;
+      color: var(--muted);
+    }
+
+    section li::before {
+      content: "→ ";
+      color: var(--primary);
+      margin-right: 0.5rem;
+    }
+
+    .highlight {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+    }
+
+    .highlight h3 {
+      font-size: 1.1rem;
+      margin-bottom: 0.75rem;
+      color: var(--primary);
+    }
+
+    .team-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .team-member {
+      padding: 1rem;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      text-align: center;
+    }
+
+    .team-member h4 {
+      font-size: 1rem;
+      margin-bottom: 0.25rem;
+      color: var(--text);
+    }
+
+    .team-member p {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin: 0;
+      font-family: 'Courier New', monospace;
+    }
+
+    /* FOOTER */
+    footer {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    footer p {
+      margin: 0.5rem 0;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+
+      .content-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      header h1 {
+        font-size: 2rem;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+      }
+
+      .team-list {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-container">
+    <div class="brand">
+      <i class="fab fa-linux"></i>
+      FreeRoot Linux
+    </div>
+    <div class="nav-links">
+      <a href="#about">Sobre</a>
+      <a href="#features">Recursos</a>
+      <a href="#community">Comunidade</a>
+      <a href="https://discord.gg/vgBh56SH">Discord</a>
+    </div>
+  </div>
+</nav>
+
+<header>
+  <h1>FreeRoot Linux</h1>
+  <p class="tagline">
+    Uma distribuição Linux independente feita do zero, focada em aprendizado profundo, 
+    controle total do sistema e filosofia DIY e opensource. Desenvolvida por brasileiros para a comunidade mundial.
+  </p>
+
+  <div class="hero-actions">
+    <a class="btn" href="https://freeroot.org/br">
+      <i class="fas fa-download"></i>
+      Download (em breve)
+    </a>
+    <a class="btn" href="https://discord.gg/vgBh56SH">
+      <i class="fab fa-discord"></i>
+      Discord
+    </a>
+  </div>
+
+  <div class="status">
+    <i class="fas fa-tools"></i>
+    Em Desenvolvimento Ativo
+  </div>
+</header>
+
+<main>
+  <div class="content-grid">
+    
+    <section id="about">
+      <h2>Não é um fork!</h2>
+      <p>
+        O FreeRoot Linux é uma distribuição independente, desenvolvida inteiramente por voluntários brasileiros.
+      </p>
+      <p>
+        Diferentemente de muitas outras distros, o FreeRoot não é uma modificação de uma distro existente. 
+        O gerenciador de pacotes e o sistema de build foram escritos do zero por brasileiros.
+      </p>
+    </section>
+
+    <section id="features">
+      <h2>Release estável</h2>
+      <p>
+        O FreeRoot foca em estabilidade, ao invés de ser bleeding-edge. Instale uma vez, atualize rotineiramente e com segurança.
+      </p>
+      <p>
+        Graças ao nosso sistema de build contínuo, novo software é compilado em pacotes binários assim que as 
+        mudanças são enviadas para o repositório.
+      </p>
+    </section>
+
+    <section>
+      <h2>Características principais</h2>
+      <ul>
+        <li>Base feita do zero</li>
+        <li>Controle total sobre cada componente</li>
+        <li>Foco educacional e experimental</li>
+        <li>Otimizado para performance</li>
+        <li>Filosofia DIY</li>
+        <li>Transparência total do sistema</li>
+        <li>Comunidade aberta e colaborativa</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Informações técnicas</h2>
+      <p>
+        Sistema feito do zero, com compilação manual de todos os componentes. Durante a construção, 
+        é comum encontrar dependências que precisam ser resolvidas manualmente.
+      </p>
+      <div class="highlight">
+        <h3>Sistema atual</h3>
+        <p>Kernel 4.19.66-LFS, Shell dash, arquitetura x86_64</p>
+      </p>
+    </p>
+      <div class="2highlight">
+        <h3>Outras informações</h3>
+        <p>Compilador Clang, Init system openRC, library glibc</p>
+      </div>
+    </section>
+
+  </div>
+
+  <section id="community" style="margin-top: 3rem;">
+    <h2>Comunidade e equipe</h2>
+    <p>
+      🇧🇷 O FreeRoot Linux está sendo desenvolvido por uma equipe dedicada de brasileiros. 
+      Entre em contato através do Discord para contribuir ou acompanhar o desenvolvimento.
+    </p>
+    
+    <div class="team-list">
+      <div class="team-member">
+        <h4>estevao</h4>
+        <p>@estevaogatito</p>
+      </div>
+      <div class="team-member">
+        <h4>pysvoidxz</h4>
+        <p>@pysvoidxz</p>
+      </div>
+      <div class="team-member">
+        <h4>The LuuunoXD</h4>
+        <p>@theluuunoxd</p>
+      </div>
+      <div class="team-member">
+        <h4>Ts</h4>
+        <p>@ts.com7</p>
+      </div>
+      <div class="team-member">
+        <h4>ADR1XX</h4>
+        <p>@mrx042557</p>
+      </div>
+      <div class="team-member">
+        <h4>Arch/Arisu</h4>
+        <p>@arisu090408</p>
+      </div>
+      <div class="team-member">
+        <h4>Daniel</h4>
+        <p>@daniastux</p>
+      </div>
+      <div class="team-member">
+        <h4>Gustaxd</h4>
+        <p>@gusta.kkkkjjj</p>
+      </div>
+      <div class="team-member">
+        <h4>lian</h4>
+        <p>@decimacro</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <p><strong>© 2026 FreeRoot Linux</strong> • Todos os direitos reservados</p>
+  <p>🇧🇷 Projeto open source desenvolvido por brasileiros</p>
+  <p>Linux From Scratch é um projeto de livro e comunidade que fornece instruções passo a passo para construir um sistema Linux personalizado.</p>
+</footer>
+
+</body>
+</html>
